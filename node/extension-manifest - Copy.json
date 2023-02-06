@@ -11,10 +11,18 @@
   },
   "action": {
     "default_popup": "index.html",
-    "default_title": "Generate post"
+    "default_title": "Generate blog post"
   },
   "background": {
     "service_worker": "scripts/contextMenuServiceWorker.js"
   },
-  "permissions": ["contextMenus", "tabs", "storage"]
+  "permissions": ["contextMenus", "tabs", "storage"],
+  // Add the line of code here
+  "host_permissions": ["https://*/*"],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["scripts/content.js"]
+    }
+  ]
 }
